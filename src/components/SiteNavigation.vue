@@ -6,8 +6,8 @@
     >
       <RouterLink :to="{ name: 'home' }">
         <div class="flex items-center gap-3">
-          <i class="fa-solid fa-sun text-2xl"></i>
-          <p class="text-2xl">Ta Météo</p>
+          <img class="w-16 fill-white" src="/sun.svg" alt="sun" />
+          <p class="text-4xl">Ta Météo</p>
         </div>
       </RouterLink>
       <div class="flex gap-3 flex-1 justify-end">
