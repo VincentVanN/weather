@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "weather-primary": "#00668A",
-        "weather-secondary": "#004E71",
+        "weather-primary": "#000",
+        "weather-secondary": "#ffdc00",
         "footer-color": "rgba(255, 255, 255, 0.7)",
       },
     },
@@ -27,7 +27,7 @@ module.exports = {
       addBase({
         ".scrollbar": {
           overflowY: "auto",
-          scrollbarColor: "#00668A",
+          scrollbarColor: "#ffdc00",
           scrollbarWidth: "thin",
         },
         ".scrollbar::-webkit-scrollbar": {
@@ -35,7 +35,7 @@ module.exports = {
           width: "2px",
         },
         ".scrollbar::-webkit-scrollbar-thumb": {
-          backgroundColor: "#004E71",
+          backgroundColor: "#ffdc00",
         },
         ".scrollbar::-webkit-scrollbar-track-piece": {
           backgroundColor: "white",

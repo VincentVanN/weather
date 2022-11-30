@@ -2,7 +2,7 @@
   <div class="flex flex-col flex-1 items-center mb-16">
     <div
       v-if="route.query.preview"
-      class="text-white p-4 bg-weather-secondary w-full text-center"
+      class="text-black p-4 bg-weather-secondary w-full text-center"
     >
       Vous êtes actuellement en train de prévisualiser cette ville, cliquez sur
       "+" pour commencer à la suivre.
@@ -125,6 +125,7 @@ const getWeatherData = async () => {
       const utc = hour.dt * 1000 + localOffset;
       hour.currentTime = utc + 1000 * weatherData.data.timezone_offset;
     });
+    await new Promise((res) => setTimeout(res, 1000));
     return weatherData.data;
   } catch (error) {
     console.log(error.response.data.message);
