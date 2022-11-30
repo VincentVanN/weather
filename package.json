@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "start": "vite",
     "dev": "vite",
-    "build": "postcss asset/tailwind.css -o public/build/tailwind.css",
+    "style" : "tailwindcss build src/assets/styles/index.css -o src/assets/styles/tailwind.css" ,
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
