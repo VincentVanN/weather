@@ -10,7 +10,7 @@ const router = createRouter({
       name: "home",
       component: HomeView,
       meta: {
-        title: "Home",
+        title: "Accueil",
       },
     },
     {
@@ -18,10 +18,15 @@ const router = createRouter({
       name: "cityView",
       component: CityView,
       meta: {
-        title: "cityView",
+        title: "Météo",
       },
     },
   ],
 });
-
+router.beforeEach((to, from, next) => {
+  document.title = `${
+    to.params.state ? `${to.params.city}, ${to.params.state}` : to.meta.title
+  } | Ta météo`;
+  next();
+});
 export default router;
