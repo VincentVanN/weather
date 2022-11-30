@@ -1,9 +1,8 @@
 <template>
-  <div>
-
-  </div>
+  <div></div>
 </template>
 
 <script setup>
-
+import ref from "vue";
+const savedCities = ref([]);
 </script>
