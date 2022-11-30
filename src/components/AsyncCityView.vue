@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col flex-1 items-center">
+  <div class="flex flex-col flex-1 items-center mb-16">
     <div
       v-if="route.query.preview"
       class="text-white p-4 bg-weather-secondary w-full text-center"
@@ -94,14 +94,21 @@
         </div>
       </div>
     </div>
+    <div
+      class="flex items-center gap-2 mb-36 cursor-pointer duration-150 text-white hover:text-red-500"
+      @click="removeCity"
+      v-if="!route.query.preview"
+    >
+      <i class="fa-solid fa-trash"></i>
+      <p>Retirer la ville des favoris</p>
+    </div>
   </div>
 </template>
 
 <script setup>
 import axios from "axios";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 const openweatherAPIKey = import.meta.env.VITE_OPENWEATHER_KEY;
-console.log(openweatherAPIKey);
 const route = useRoute();
 const getWeatherData = async () => {
   try {
@@ -118,12 +125,19 @@ const getWeatherData = async () => {
       const utc = hour.dt * 1000 + localOffset;
       hour.currentTime = utc + 1000 * weatherData.data.timezone_offset;
     });
-    console.log(weatherData);
     return weatherData.data;
   } catch (error) {
     console.log(error.response.data.message);
   }
 };
 const weatherData = await getWeatherData();
-console.log(weatherData);
+const router = useRouter();
+const removeCity = () => {
+  const cities = JSON.parse(localStorage.getItem("savedCities"));
+  const updatedCities = cities.filter((city) => city.id !== route.query.id);
+  localStorage.setItem("savedCities", JSON.stringify(updatedCities));
+  router.push({
+    name: "home",
+  });
+};
 </script>

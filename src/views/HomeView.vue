@@ -26,12 +26,21 @@
         </template>
       </ul>
     </div>
+    <div class="flex flex-col gap-4">
+      <Suspense>
+        <CityList />
+        <template #fallback>
+          <p>loading...</p>
+        </template>
+      </Suspense>
+    </div>
   </main>
 </template>
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
+import CityList from "../components/CityList.vue";
 const mapBoxAPIKey = import.meta.env.VITE_MAPBOX_KEY;
 const searchQuery = ref("");
 const queryTimeout = ref(null);
@@ -41,7 +50,6 @@ const noResult = ref(null);
 
 const router = useRouter();
 const previewCity = (searchResult) => {
-  console.log(searchResult);
   const [city, state] = searchResult.place_name.split(",");
   router.push({
     name: "cityView",
@@ -66,7 +74,6 @@ const getSearchResults = () => {
         noResult.value = Object.keys(mapboxSearchResults.value).length === 0;
       } catch {
         searchError.value = true;
-        console.log(searchError);
       }
       return;
     }
