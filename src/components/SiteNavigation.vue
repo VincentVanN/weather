@@ -65,7 +65,7 @@ const savedCities = ref([]);
 const route = useRoute();
 const router = useRouter();
 const addCity = () => {
-  if (localStorage.getItem(savedCities)) {
+  if (localStorage.getItem("savedCities")) {
     savedCities.value = JSON.parse(localStorage.getItem("savedCities"));
   }
   const locationObj = {
@@ -84,7 +84,6 @@ const addCity = () => {
   query.id = locationObj.id;
   router.replace({ query });
 };
-
 
 const modalActive = ref(null);
 const toggleModal = () => {

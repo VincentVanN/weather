@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         "weather-primary": "#00668A",
         "weather-secondary": "#004E71",
+        "footer-color": "rgba(255, 255, 255, 0.7)",
       },
     },
     fontFamily: {
@@ -22,7 +23,7 @@ module.exports = {
     },
   },
   plugins: [
-    plugin(({ addBase }) => {
+    plugin(({ addBase, addUtilities }) => {
       addBase({
         ".scrollbar": {
           overflowY: "auto",
@@ -38,6 +39,21 @@ module.exports = {
         },
         ".scrollbar::-webkit-scrollbar-track-piece": {
           backgroundColor: "white",
+        },
+      });
+      addUtilities({
+        ".inset-center": {
+          bottom: "2%",
+          left: "50%",
+          "@apply -translate-x-1/2 -translate-y-1/2": {},
+        },
+        ".inset-y-center": {
+          top: "50%",
+          "@apply -translate-y-1/2": {},
+        },
+        ".inset-x-center": {
+          left: "50%",
+          "@apply translate-x-1/2": {},
         },
       });
     }),
