@@ -1,4 +1,5 @@
 /* eslint-env node */
+const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
@@ -20,5 +21,25 @@ module.exports = {
       md: "768px",
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addBase }) => {
+      addBase({
+        ".scrollbar": {
+          overflowY: "auto",
+          scrollbarColor: "#00668A",
+          scrollbarWidth: "thin",
+        },
+        ".scrollbar::-webkit-scrollbar": {
+          height: "4px",
+          width: "2px",
+        },
+        ".scrollbar::-webkit-scrollbar-thumb": {
+          backgroundColor: "#004E71",
+        },
+        ".scrollbar::-webkit-scrollbar-track-piece": {
+          backgroundColor: "white",
+        },
+      });
+    }),
+  ],
 };
